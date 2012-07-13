@@ -41,7 +41,7 @@ Development files and headers for %{name}.
 
 %package	tools
 Summary:	Tool for creating custom document fingerprints
-Group:		Applications/Publishing
+Group:		Publishing
 Requires:	%{libname} = %{version}-%{release}
 Conflicts:	%{mklibname textcat -d} < 3.3.1
 
