@@ -6,7 +6,7 @@
 Summary:	Text categorization library
 Name:		libexttextcat
 Version:	3.3.1
-Release:	2
+Release:	4
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.freedesktop.org/wiki/Software/libexttextcat
@@ -20,11 +20,12 @@ intended for language guessing.
 %package -n	%{libname}
 Summary:	Text categorization library
 Group:		System/Libraries
+Requires:	%{name}-data >= %{version}
+Provides:	libexttextcat = %{version}-%{release}
 
 %description -n	%{libname}
 %{name} is an N-Gram-Based Text Categorization library primarily
 intended for language guessing.
-
 
 %package -n	%{develname}
 Summary:	Development files and headers for %{name}
@@ -39,19 +40,25 @@ Provides:	%{mklibname textcat -d} = %{version}
 %description -n	%{develname}
 Development files and headers for %{name}.
 
-%package	tools
+%package tools
 Summary:	Tool for creating custom document fingerprints
 Group:		Publishing
 Requires:	%{libname} = %{version}-%{release}
 Conflicts:	%{mklibname textcat -d} < 3.3.1
 
-%description	tools
+%description tools
 The %{name}-tools package contains the createfp program that allows
 you to easily create your own document fingerprints.
 
+%package data
+Summary:	Data files for text categorization library
+Group:		System/Libraries
+Conflicts:	%{mklibname exttextcat 0} < 3.3.1-4
+
+%description data
+Data files for %{name}.
 
 %prep
-
 %setup -q
 
 %build
@@ -66,15 +73,10 @@ autoreconf -fi
 make check
 
 %install
-
 %makeinstall_std
 
-rm -f %{buildroot}%{_libdir}/*.la
-
 %files -n %{libname}
-%doc LICENSE README*
 %{_libdir}/lib*.so.%{major}*
-%{_datadir}/%{name}
 
 %files -n %{develname}
 %dir %{_includedir}/%{name}
@@ -85,3 +87,19 @@ rm -f %{buildroot}%{_libdir}/*.la
 
 %files tools
 %{_bindir}/createfp
+
+%files data
+%doc LICENSE README*
+%{_datadir}/%{name}
+
+%changelog
+* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 3.3.1-2
++ Revision: 809185
+- rebuild
+
+* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 3.3.1-1
++ Revision: 809164
+- fix group
+- initial Mandriva package (fedora import)
+- Created package structure for libexttextcat.
+
