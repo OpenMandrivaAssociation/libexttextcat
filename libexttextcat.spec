@@ -1,12 +1,12 @@
-%define lname exttextcat1.0_
+%define lname exttextcat2.0_
 %define major 0
 %define libname %mklibname %{lname} %{major}
-%define develname %mklibname exttextcat1.0 -d
+%define develname %mklibname exttextcat2.0 -d
 
 Summary:	Text categorization library
 Name:		libexttextcat
-Version:	3.3.1
-Release:	5
+Version:	3.4.0
+Release:	1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.freedesktop.org/wiki/Software/libexttextcat
