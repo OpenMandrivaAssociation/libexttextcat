@@ -1,7 +1,8 @@
-%define lname exttextcat2.0_
-%define major 0
-%define libname %mklibname %{lname} %{major}
-%define develname %mklibname exttextcat2.0 -d
+%define lname	exttextcat
+%define api	2.0
+%define major	0
+%define libname %mklibname %{lname} %{api} %{major}
+%define devname %mklibname %{lname} %{api} -d
 
 Summary:	Text categorization library
 Name:		libexttextcat
@@ -9,9 +10,9 @@ Version:	3.4.0
 Release:	1
 Group:		System/Libraries
 License:	BSD
-URL:		http://www.freedesktop.org/wiki/Software/libexttextcat
+Url:		http://www.freedesktop.org/wiki/Software/libexttextcat
 Source0:	http://dev-www.libreoffice.org/src/libexttextcat/%{name}-%{version}.tar.xz
-BuildRequires: autoconf automake libtool
+BuildRequires: libtool
 
 %description
 %{name} is an N-Gram-Based Text Categorization library primarily
@@ -27,24 +28,18 @@ Provides:	libexttextcat = %{version}-%{release}
 %{name} is an N-Gram-Based Text Categorization library primarily
 intended for language guessing.
 
-%package -n	%{develname}
+%package -n	%{devname}
 Summary:	Development files and headers for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{lname}-devel = %{version}-%{release}
-Provides:	textcat-devel = %{version}-%{release}
-Obsoletes:	%{mklibname textcat -d} < 3.3.1
-Provides:	%{mklibname textcat -d} = %{version}
 
-%description -n	%{develname}
+%description -n	%{devname}
 Development files and headers for %{name}.
 
 %package tools
 Summary:	Tool for creating custom document fingerprints
 Group:		Publishing
-Requires:	%{libname} = %{version}-%{release}
-Conflicts:	%{mklibname textcat -d} < 3.3.1
 
 %description tools
 The %{name}-tools package contains the createfp program that allows
@@ -53,19 +48,18 @@ you to easily create your own document fingerprints.
 %package data
 Summary:	Data files for text categorization library
 Group:		System/Libraries
-Conflicts:	%{mklibname exttextcat 0} < 3.3.1-4
 
 %description data
 Data files for %{name}.
 
 %prep
 %setup -q
-
-%build
 mkdir -p m4
 autoreconf -fi
+
+%build
 %configure2_5x \
-    --disable-static \
+	--disable-static \
 
 %make
 
@@ -76,9 +70,9 @@ make check
 %makeinstall_std
 
 %files -n %{libname}
-%{_libdir}/lib*.so.%{major}*
+%{_libdir}/libexttextcat-2.0.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %dir %{_includedir}/%{name}
 %{_libdir}/*.so
 %{_includedir}/%{name}/*
@@ -91,15 +85,4 @@ make check
 %files data
 %doc LICENSE README*
 %{_datadir}/%{name}
-
-%changelog
-* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 3.3.1-2
-+ Revision: 809185
-- rebuild
-
-* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 3.3.1-1
-+ Revision: 809164
-- fix group
-- initial Mandriva package (fedora import)
-- Created package structure for libexttextcat.
 
