@@ -58,7 +58,10 @@ mkdir -p m4
 autoreconf -fi
 
 %build
-%configure2_5x \
+export CFLAGS="%{optflags} -Qunused-arguments"
+export CXXFLAGS="%{optflags} -Qunused-arguments"
+
+%configure \
 	--disable-static \
 
 %make
