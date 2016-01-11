@@ -6,8 +6,8 @@
 
 Summary:	Text categorization library
 Name:		libexttextcat
-Version:	3.4.0
-Release:	9
+Version:	3.4.4
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.freedesktop.org/wiki/Software/libexttextcat
@@ -54,15 +54,12 @@ Data files for %{name}.
 
 %prep
 %setup -q
-mkdir -p m4
-autoreconf -fi
 
 %build
 export CFLAGS="%{optflags} -Qunused-arguments"
 export CXXFLAGS="%{optflags} -Qunused-arguments"
 
-%configure \
-	--disable-static \
+%configure
 
 %make
 
