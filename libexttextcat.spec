@@ -6,8 +6,8 @@
 
 Summary:	Text categorization library
 Name:		libexttextcat
-Version:	3.4.5
-Release:	4
+Version:	3.4.6
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.freedesktop.org/wiki/Software/libexttextcat
