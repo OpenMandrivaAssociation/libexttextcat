@@ -63,13 +63,13 @@ export CXXFLAGS="%{optflags} -Qunused-arguments"
 
 %configure
 
-%make
+%make_build
 
 %check
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libexttextcat-2.0.so.%{major}*
