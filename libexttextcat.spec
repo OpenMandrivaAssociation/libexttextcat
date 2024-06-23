@@ -6,12 +6,14 @@
 
 Summary:	Text categorization library
 Name:		libexttextcat
-Version:	3.4.6
-Release:	2
+Version:	3.4.7
+Release:	1
 Group:		System/Libraries
 License:	BSD
-Url:		http://www.freedesktop.org/wiki/Software/libexttextcat
-Source0:	http://dev-www.libreoffice.org/src/libexttextcat/%{name}-%{version}.tar.xz
+Url:		https://www.freedesktop.org/wiki/Software/libexttextcat
+Source0:  https://github.com/LibreOffice/libexttextcat/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
+# Looks like no longer updated
+#Source0:	http://dev-www.libreoffice.org/src/libexttextcat/%{name}-%{version}.tar.xz
 BuildRequires: libtool
 
 %description
