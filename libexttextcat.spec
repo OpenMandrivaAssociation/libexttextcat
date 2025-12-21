@@ -14,6 +14,11 @@ Url:		https://www.freedesktop.org/wiki/Software/libexttextcat
 Source0:  https://github.com/LibreOffice/libexttextcat/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 # Looks like no longer updated
 #Source0:	http://dev-www.libreoffice.org/src/libexttextcat/%{name}-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: libtool
 
 %description
