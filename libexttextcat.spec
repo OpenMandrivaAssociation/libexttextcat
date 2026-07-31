@@ -6,7 +6,7 @@
 
 Summary:	Text categorization library
 Name:		libexttextcat
-Version:	3.4.7
+Version:	3.4.8
 Release:	1
 Group:		System/Libraries
 License:	BSD
